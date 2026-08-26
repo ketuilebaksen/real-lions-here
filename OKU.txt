@@ -1,0 +1,100 @@
+REAL LIONS HERE — KANAL KURULUMU
+=================================
+
+Evet, tabani KTL REPORT'tan kopyaladik. Yani bu kanal da SES MODUNDA
+calisiyor: metin yazmiyorsun, ses dosyasini atiyorsun, kurgu sesin
+kendisine gore kesiliyor. Dosyanin adi videonun basligi oluyor.
+
+Takim: Detroit Lions | Stadyum: Ford Field | Renk: Honolulu mavisi
+Kadro (channel.json icinde) 2026 sezonuna gore: Goff, Gibbs, St. Brown,
+Hutchinson, Sewell, Dan Campbell...
+
+
+ADIM 1 — YENI DEPO AC
+---------------------
+github.com -> sag ustte + -> New repository
+  Repository name : real-lions-here
+  Public sec       (Private'ta depolama doluyor, gecen sefer yasadik)
+  Add a README     -> ISARETLEME, bos kalsin
+  Create repository
+
+
+ADIM 2 — BILGISAYARINA INDIR
+----------------------------
+Acilan sayfada  Code -> Open with GitHub Desktop
+GitHub Desktop klasoru nereye kuracagini sorar, kabul et.
+
+
+ADIM 3 — DOSYALARI KOPYALA
+--------------------------
+Bu zip'in icindekilerin HEPSINI (OKU.txt haric) o klasore kopyala.
+
+  Ctrl+A -> Ctrl+C  ->  klasorde Ctrl+V
+
+Ctrl+X (kes) KULLANMA. Iki kere basimiza geldi, 35 dosya ucmustu.
+
+Klasorde su yapi olmali:
+  channel.json
+  .gitignore
+  assets/       (yazi tipleri)
+  scripts/      (23 python dosyasi)
+  .github/workflows/   render-queue.yml, motion-lib.yml
+  content/queue/       (simdilik bos)
+
+
+ADIM 4 — GONDER
+---------------
+GitHub Desktop'ta soldaki listede butun dosyalar gorunecek.
+Summary kutusuna:  ilk kurulum
+Commit to main  ->  sonra ustteki  Push origin
+
+
+ADIM 5 — IZNI AC (bunu unutma, yoksa video yayinlanamaz)
+--------------------------------------------------------
+Depoda  Settings -> Actions -> General
+En altta "Workflow permissions"
+  "Read and write permissions" sec  ->  Save
+
+
+ADIM 6 — STOK VIDEOLARI YUKLE
+-----------------------------
+Depoda sag tarafta  Releases -> Create a new release
+
+  Tag       : broll        (kutuya yaz, "Create new tag" cikacak, tikla)
+  Title     : broll
+  Dosyalar  : Lions stok videolarini surukle
+  ---> "Publish release" e bas. "Save draft" e BASMA.
+
+Taslak kalan bir Release indirilemiyor; Cowboys videosu bu yuzden bastan
+sona kart cikmisti.
+
+Ayni sekilde istersen:
+  Tag: music     -> arka plan muzikleri
+  Tag: ambient   -> stadyum ugultusu (Suno ile urettiklerin)
+
+
+ADIM 7 — ILK VIDEO
+------------------
+Ses dosyani  content/queue  klasorune at.
+Dosya adini videonun basligi yap, ornegin:
+
+  Lions Trade Rumors EXPLAINED.mp3
+
+GitHub Desktop -> commit -> push.
+Push biter bitmez render kendi basliyor. Actions sekmesinden izleyebilirsin.
+Bittiginde video Releases'te, ayrica sana bir issue bildirimi dusuyor.
+
+Ayni anda birden fazla ses atabilirsin — her biri icin ayri makine kalkar,
+ucer ucer paralel gider.
+
+
+ISTEGE BAGLI — HAREKETLI GRAFIKLER
+----------------------------------
+Icinde motion-lib.yml de var. Ketuil Knicks'e kurdugumuz sistem: kesimlerin
+bir kismi stok video yerine hareketli grafikten gelir.
+
+Lions'ta simdilik KAPALI (yani her sey stok video). Acmak istersen:
+  1. Actions -> motion-lib -> Run workflow   (bir kez, ~1,5 saat)
+  2. channel.json'a su satiri ekle:   "stock_share": 0.2
+
+Acele etme, once kanal normal calissin, sonra bakariz.
